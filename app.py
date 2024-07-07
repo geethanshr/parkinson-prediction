@@ -1,7 +1,7 @@
 import streamlit as st
+import pandas as pd
 import pickle
 import numpy as np
-import pandas as pd
 
 # Load the models
 with open('model1.pkl', 'rb') as f:
@@ -24,6 +24,7 @@ st.header("Demographic Details")
 age = st.number_input("Age", min_value=0, max_value=120, step=1)
 gender = st.selectbox("Gender", ["Male", "Female", "Other"])
 ethnicity = st.selectbox("Ethnicity", ["Caucasian", "African American", "Asian", "Other"])
+education_level = st.selectbox("Education Level", ["None", "High School", "Bachelor's", "Higher"])
 
 # Lifestyle Factors
 st.header("Lifestyle Factors")
@@ -68,22 +69,21 @@ speech_problems = st.radio("Speech Problems", ["No", "Yes"])
 sleep_disorders = st.radio("Sleep Disorders", ["No", "Yes"])
 constipation = st.radio("Constipation", ["No", "Yes"])
 
-
 # Helper function to convert Yes/No to 1/0
 def yes_no_to_numeric(value):
-    return 1 if value == "Yes" else 0
+    return 1.0 if value == "Yes" else 0.0
 
 # Prediction logic
 if st.button("Submit"):
     # Collect input data
     input_data = {
         'Rigidity': yes_no_to_numeric(rigidity),
-        'FunctionalAssessment': functional_assessment,
-        'MoCA': moca,
+        'FunctionalAssessment': float(functional_assessment),
+        'MoCA': float(moca),
         'Tremor': yes_no_to_numeric(tremor),
         'Bradykinesia': yes_no_to_numeric(bradykinesia),
-        'PosturalInstability': yes_no_to_numeric(postural_instability),
-        'UPDRS': updrs
+        'UPDRS': float(updrs),
+        'PosturalInstability': yes_no_to_numeric(postural_instability)
     }
 
     # Select model and features
@@ -98,7 +98,7 @@ if st.button("Submit"):
         features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
 
     # Prepare data for prediction
-    data = pd.DataFrame([input_data], columns=features)
+    data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
 
     # Make prediction
     prediction = model.predict(data)
