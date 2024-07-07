@@ -68,20 +68,21 @@ speech_problems = st.radio("Speech Problems", ["No", "Yes"])
 sleep_disorders = st.radio("Sleep Disorders", ["No", "Yes"])
 constipation = st.radio("Constipation", ["No", "Yes"])
 
-# Diagnosis Information
-st.header("Diagnosis Information")
-diagnosis = st.radio("Diagnosis for Parkinson's Disease", ["No", "Yes"])
+
+# Helper function to convert Yes/No to 1/0
+def yes_no_to_numeric(value):
+    return 1 if value == "Yes" else 0
 
 # Prediction logic
 if st.button("Submit"):
     # Collect input data
     input_data = {
-        'Rigidity': rigidity,
+        'Rigidity': yes_no_to_numeric(rigidity),
         'FunctionalAssessment': functional_assessment,
         'MoCA': moca,
-        'Tremor': tremor,
-        'Bradykinesia': bradykinesia,
-        'PosturalInstability': postural_instability,
+        'Tremor': yes_no_to_numeric(tremor),
+        'Bradykinesia': yes_no_to_numeric(bradykinesia),
+        'PosturalInstability': yes_no_to_numeric(postural_instability),
         'UPDRS': updrs
     }
 
@@ -89,7 +90,7 @@ if st.button("Submit"):
     if functional_assessment < 5 and updrs > 50:
         model = model1
         features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
-    elif tremor == "Yes":
+    elif yes_no_to_numeric(tremor) == 1:
         model = model2
         features = ['UPDRS', 'Rigidity', 'FunctionalAssessment']
     else:
