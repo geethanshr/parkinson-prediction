@@ -1,16 +1,11 @@
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 
 # Load the models
-with open('model1.pkl', 'rb') as f:
-    model1 = pickle.load(f)
-
-with open('model2.pkl', 'rb') as f:
-    model2 = pickle.load(f)
-
-with open('model3.pkl', 'rb') as f:
-    model3 = pickle.load(f)
+model1 = joblib.load('model1.joblib')
+model2 = joblib.load('model2.joblib')
+model3 = joblib.load('model3.joblib')
 
 st.title("Parkinson's Disease Risk Assessment")
 
