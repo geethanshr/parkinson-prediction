@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
+import sklearn
 st.write(f"Scikit-learn version: {sklearn.__version__}")
 # Load the models
 with open('model1.pkl', 'rb') as f:
