@@ -1,17 +1,16 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import joblib
 import numpy as np
+import sklearn
 
-# Load the models
-with open('model1.pkl', 'rb') as f:
-    model1 = pickle.load(f)
+# Display scikit-learn version
+st.write(f"Scikit-learn version: {sklearn.__version__}")
 
-with open('model2.pkl', 'rb') as f:
-    model2 = pickle.load(f)
-
-with open('model3.pkl', 'rb') as f:
-    model3 = pickle.load(f)
+# Load the models using joblib
+model1 = joblib.load('model1.pkl')
+model2 = joblib.load('model2.pkl')
+model3 = joblib.load('model3.pkl')
 
 st.title("Parkinson's Disease Risk Assessment")
 
