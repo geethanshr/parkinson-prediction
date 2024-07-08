@@ -1,99 +1,47 @@
 import streamlit as st
-import joblib
+import pickle
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
-# Load the models using joblib
-model1 = joblib.load('model1.pkl')
-model2 = joblib.load('model2.pkl')
-model3 = joblib.load('model3.pkl')
+# Load the model
+def load_model(model_file):
+    with open(model_file, 'rb') as f:
+        model = pickle.load(f)
+    return model
 
-st.title("Parkinson's Disease Risk Assessment")
+# Load the model and scaler
+model = load_model('model.pkl')
+scaler = model.named_steps['scaler']  # Assuming 'scaler' is the name of your StandardScaler step
 
-# General Details
-st.header("General Details")
-patient_name = st.text_input("Patient Name")
+# Define your Streamlit app
+def main():
+    st.title('Random Forest Classifier Prediction App')
 
-# Demographic Details
-st.header("Demographic Details")
-age = st.number_input("Age", min_value=0, max_value=120, step=1)
-gender = st.selectbox("Gender", ["Male", "Female", "Other"])
-ethnicity = st.selectbox("Ethnicity", ["Caucasian", "African American", "Asian", "Other"])
-education_level = st.selectbox("Education Level", ["None", "High School", "Bachelor's", "Higher"])
+    # Add inputs for user to enter data
+    st.sidebar.header('Input Parameters')
+    # Example: you can add sliders or text boxes for users to input data
 
-# Lifestyle Factors
-st.header("Lifestyle Factors")
-bmi = st.number_input("BMI", min_value=0.0, max_value=100.0, step=0.1)
-smoking = st.radio("Smoking", ["No", "Yes"])
-alcohol_consumption = st.slider("Alcohol Consumption (units per week)", 0, 20)
-physical_activity = st.slider("Physical Activity (hours per week)", 0, 10)
-diet_quality = st.slider("Diet Quality (0-10)", 0, 10)
-sleep_quality = st.slider("Sleep Quality (4-10)", 4, 10)
+    # Example: you can add code to retrieve user inputs
+    input_data = {
+        'Rigidity': st.sidebar.slider('Rigidity', 0, 10, 5),
+        'FunctionalAssessment': st.sidebar.slider('Functional Assessment', 0, 100, 50),
+        'MoCA': st.sidebar.slider('MoCA', 0, 100, 50),
+        'Tremor': st.sidebar.selectbox('Tremor', [0, 1]),
+        'Bradykinesia': st.sidebar.slider('Bradykinesia', 0, 10, 5)
+    }
 
-# Medical History
-st.header("Medical History")
-family_history_parkinsons = st.radio("Family History of Parkinson's Disease", ["No", "Yes"])
-traumatic_brain_injury = st.radio("History of Traumatic Brain Injury", ["No", "Yes"])
-hypertension = st.radio("Hypertension", ["No", "Yes"])
-diabetes = st.radio("Diabetes", ["No", "Yes"])
-depression = st.radio("Depression", ["No", "Yes"])
-stroke = st.radio("History of Stroke", ["No", "Yes"])
+    # Convert input data into a DataFrame
+    input_df = pd.DataFrame([input_data])
 
-# Clinical Measurements
-st.header("Clinical Measurements")
-systolic_bp = st.slider("Systolic Blood Pressure (mmHg)", 90, 180)
-diastolic_bp = st.slider("Diastolic Blood Pressure (mmHg)", 60, 120)
-cholesterol_total = st.slider("Total Cholesterol (mg/dL)", 150, 300)
-cholesterol_ldl = st.slider("LDL Cholesterol (mg/dL)", 50, 200)
-cholesterol_hdl = st.slider("HDL Cholesterol (mg/dL)", 20, 100)
-cholesterol_triglycerides = st.slider("Triglycerides (mg/dL)", 50, 400)
+    # Perform scaling using the pre-fitted scaler
+    input_scaled = scaler.transform(input_df)
 
-# Cognitive and Functional Assessments
-st.header("Cognitive and Functional Assessments")
-updrs = st.slider("UPDRS Score (0-199)", 0, 199)
-moca = st.slider("MoCA Score (0-30)", 0, 30)
-functional_assessment = st.slider("Functional Assessment Score (0-10)", 0, 10)
+    # Make predictions
+    prediction = model.predict(input_scaled)
 
-# Symptoms
-st.header("Symptoms")
-tremor = st.radio("Tremor", ["No", "Yes"])
-rigidity = st.radio("Rigidity", ["No", "Yes"])
-bradykinesia = st.radio("Bradykinesia", ["No", "Yes"])
-postural_instability = st.radio("Postural Instability", ["No", "Yes"])
-speech_problems = st.radio("Speech Problems", ["No", "Yes"])
-sleep_disorders = st.radio("Sleep Disorders", ["No", "Yes"])
-constipation = st.radio("Constipation", ["No", "Yes"])
+    # Display prediction
+    st.subheader('Prediction')
+    st.write(prediction)
 
-# Helper function to convert Yes/No to 1/0
-def yes_no_to_numeric(value):
-    return 1 if value == "Yes" else 0
-
-# Prediction logic
-input_data = {
-    'Rigidity': 1,
-    'FunctionalAssessment': 34,
-    'MoCA': 34,
-    'Tremor': 0,
-    'Bradykinesia': 1,
-    'PosturalInstability': 0,
-    'UPDRS': 34,
-}
-
-
-if input_data['FunctionalAssessment']< 5 and input_data['UPDRS'] > 50:
-    model = model_1  # Assuming model1 is defined elsewhere
-    features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
-elif input_data['Tremor'] == 1:
-    model = model_2  # Assuming model2 is defined elsewhere
-    features = ['UPDRS', 'Rigidity', 'FunctionalAssessment']
-else:
-    model = model_3  # Assuming model3 is defined elsewhere
-    features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
-
-# Prepare data for prediction
-data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
-
-# Make prediction
-prediction = model.predict(data)
-    # Display prediction result
-st.write("### Prediction Result")
-st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
+if __name__ == '__main__':
+    main()
