@@ -98,8 +98,7 @@ if st.button("Submit"):
         features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
 
     # Prepare data for prediction
-    data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
-
+    data = np.array([[input_data[feature] for feature in features]])
     # Make prediction
     prediction = model.predict(data)
 
