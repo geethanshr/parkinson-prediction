@@ -23,11 +23,11 @@ def main():
 
     # Example: you can add code to retrieve user inputs
     input_data = {
-        'Rigidity': st.sidebar.slider('Rigidity', 0, 10, 5),
+        'Rigidity': st.sidebar.slider('Rigidity', [0, 1]),
         'FunctionalAssessment': st.sidebar.slider('Functional Assessment', 0, 100, 50),
         'MoCA': st.sidebar.slider('MoCA', 0, 100, 50),
         'Tremor': st.sidebar.selectbox('Tremor', [0, 1]),
-        'Bradykinesia': st.sidebar.slider('Bradykinesia', 0, 10, 5)
+        'Bradykinesia': st.sidebar.slider('Bradykinesia', [0, 1])
     }
 
     # Convert input data into a DataFrame
