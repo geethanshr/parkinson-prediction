@@ -1,16 +1,17 @@
 import streamlit as st
+import pickle
 import pandas as pd
-import joblib
 import numpy as np
-import sklearn
 
-# Display scikit-learn version
-st.write(f"Scikit-learn version: {sklearn.__version__}")
+# Load the models
+with open('model1.pkl', 'rb') as f:
+    model1 = pickle.load(f)
 
-# Load the models using joblib
-model1 = joblib.load('model1.pkl')
-model2 = joblib.load('model2.pkl')
-model3 = joblib.load('model3.pkl')
+with open('model2.pkl', 'rb') as f:
+    model2 = pickle.load(f)
+
+with open('model3.pkl', 'rb') as f:
+    model3 = pickle.load(f)
 
 st.title("Parkinson's Disease Risk Assessment")
 
@@ -70,18 +71,18 @@ constipation = st.radio("Constipation", ["No", "Yes"])
 
 # Helper function to convert Yes/No to 1/0
 def yes_no_to_numeric(value):
-    return 1.0 if value == "Yes" else 0.0
+    return 1 if value == "Yes" else 0
 
 # Prediction logic
 if st.button("Submit"):
     # Collect input data
     input_data = {
         'Rigidity': yes_no_to_numeric(rigidity),
-        'FunctionalAssessment': float(functional_assessment),
-        'MoCA': float(moca),
+        'FunctionalAssessment': functional_assessment,
+        'MoCA': moca,
         'Tremor': yes_no_to_numeric(tremor),
         'Bradykinesia': yes_no_to_numeric(bradykinesia),
-        'UPDRS': float(updrs),
+        'UPDRS': updrs,
         'PosturalInstability': yes_no_to_numeric(postural_instability)
     }
 
