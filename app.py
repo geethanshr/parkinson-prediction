@@ -95,5 +95,5 @@ data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
 # Make prediction
 prediction = model.predict(data)
     # Display prediction result
-    st.write("### Prediction Result")
-    st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
+st.write("### Prediction Result")
+st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
