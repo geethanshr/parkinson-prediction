@@ -1,17 +1,11 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
-import numpy as np
 
-# Load the models
-with open('model1.pkl', 'rb') as f:
-    model1 = pickle.load(f)
-
-with open('model2.pkl', 'rb') as f:
-    model2 = pickle.load(f)
-
-with open('model3.pkl', 'rb') as f:
-    model3 = pickle.load(f)
+# Load the models using joblib
+model1 = joblib.load('model1.pkl')
+model2 = joblib.load('model2.pkl')
+model3 = joblib.load('model3.pkl')
 
 st.title("Parkinson's Disease Risk Assessment")
 
@@ -98,7 +92,7 @@ if st.button("Submit"):
         features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
 
     # Prepare data for prediction
-    data = np.array([[input_data[feature] for feature in features]])
+    data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
     # Make prediction
     prediction = model.predict(data)
 
