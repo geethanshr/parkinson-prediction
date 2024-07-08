@@ -1,47 +1,48 @@
 import streamlit as st
-import pickle
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
+import pickle
 
-# Load the model
-def load_model(model_file):
-    with open(model_file, 'rb') as f:
+# Load the model from the pickle file
+def load_model():
+    with open('model.pkl', 'rb') as f:
         model = pickle.load(f)
     return model
 
-# Load the model and scaler
-model = load_model('model1.pkl')
-scaler = model.named_steps['scaler']  # Assuming 'scaler' is the name of your StandardScaler step
+model1 = load_model()
 
-# Define your Streamlit app
+# Define the main function for the Streamlit app
 def main():
-    st.title('Random Forest Classifier Prediction App')
+    st.title('Parkinson\'s Disease Diagnosis Prediction')
+    st.write('Enter the following parameters to get a diagnosis prediction:')
 
-    # Add inputs for user to enter data
-    st.sidebar.header('Input Parameters')
-    # Example: you can add sliders or text boxes for users to input data
+    # Create input fields for the user to enter data
+    rigidity = st.number_input('Rigidity', min_value=0, max_value=100, value=50)
+    functional_assessment = st.number_input('Functional Assessment', min_value=0, max_value=100, value=50)
+    moca = st.number_input('MoCA', min_value=0, max_value=100, value=50)
+    tremor = st.selectbox('Tremor', options=[0, 1])
+    bradykinesia = st.number_input('Bradykinesia', min_value=0, max_value=100, value=50)
 
-    # Example: you can add code to retrieve user inputs
+    # Create a dictionary of the input data
     input_data = {
-        'Rigidity': st.sidebar.slider('Rigidity', [0, 1]),
-        'FunctionalAssessment': st.sidebar.slider('Functional Assessment', 0, 100, 50),
-        'MoCA': st.sidebar.slider('MoCA', 0, 100, 50),
-        'Tremor': st.sidebar.selectbox('Tremor', [0, 1]),
-        'Bradykinesia': st.sidebar.slider('Bradykinesia', [0, 1])
+        'Rigidity': rigidity,
+        'FunctionalAssessment': functional_assessment,
+        'MoCA': moca,
+        'Tremor': tremor,
+        'Bradykinesia': bradykinesia
     }
 
-    # Convert input data into a DataFrame
+    # Convert the input data into a DataFrame
     input_df = pd.DataFrame([input_data])
 
-    # Perform scaling using the pre-fitted scaler
-    input_scaled = scaler.transform(input_df)
+    # Make prediction using the loaded model
+    prediction = model_1.predict(input_df)
 
-    # Make predictions
-    prediction = model.predict(input_scaled)
-
-    # Display prediction
-    st.subheader('Prediction')
-    st.write(prediction)
+    # Display the prediction result
+    st.write('### Prediction:')
+    if prediction[0] == 0:
+        st.write('No Parkinson\'s Disease')
+    else:
+        st.write('Parkinson\'s Disease')
 
 if __name__ == '__main__':
     main()
