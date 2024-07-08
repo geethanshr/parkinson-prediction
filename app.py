@@ -68,34 +68,32 @@ def yes_no_to_numeric(value):
     return 1 if value == "Yes" else 0
 
 # Prediction logic
-if st.button("Submit"):
-    # Collect input data
-    input_data = {
-        'Rigidity': yes_no_to_numeric(rigidity),
-        'FunctionalAssessment': functional_assessment,
-        'MoCA': moca,
-        'Tremor': yes_no_to_numeric(tremor),
-        'Bradykinesia': yes_no_to_numeric(bradykinesia),
-        'PosturalInstability': yes_no_to_numeric(postural_instability),
-         'UPDRS': updrs,
-    }
+input_data = {
+    'Rigidity': 1,
+    'FunctionalAssessment': 34,
+    'MoCA': 34,
+    'Tremor': 0,
+    'Bradykinesia': 1,
+    'PosturalInstability': 0,
+    'UPDRS': 34,
+}
 
-    # Select model and features
-    if input_data['FunctionalAssessment']< 5 and input_data['UPDRS'] > 50:
-        model = model1
-        features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
-    elif yes_no_to_numeric(tremor) == 1:
-        model = model2
-        features = ['UPDRS', 'Rigidity', 'FunctionalAssessment']
-    else:
-        model = model3
-        features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
 
-    # Prepare data for prediction
-    data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
-    # Make prediction
-    prediction = model.predict(data)
+if input_data['FunctionalAssessment']< 5 and input_data['UPDRS'] > 50:
+    model = model_1  # Assuming model1 is defined elsewhere
+    features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
+elif input_data['Tremor'] == 1:
+    model = model_2  # Assuming model2 is defined elsewhere
+    features = ['UPDRS', 'Rigidity', 'FunctionalAssessment']
+else:
+    model = model_3  # Assuming model3 is defined elsewhere
+    features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
 
+# Prepare data for prediction
+data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
+
+# Make prediction
+prediction = model.predict(data)
     # Display prediction result
     st.write("### Prediction Result")
     st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
