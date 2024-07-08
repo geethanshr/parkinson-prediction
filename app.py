@@ -81,7 +81,7 @@ if st.button("Submit"):
     }
 
     # Select model and features
-    if functional_assessment < 5 and updrs > 50:
+    if input_data['FunctionalAssessment']< 5 and input_data['UPDRS'] > 50:
         model = model1
         features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
     elif yes_no_to_numeric(tremor) == 1:
