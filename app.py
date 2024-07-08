@@ -24,7 +24,7 @@ st.header("Demographic Details")
 age = st.number_input("Age", min_value=0, max_value=120, step=1)
 gender = st.selectbox("Gender", ["Male", "Female", "Other"])
 ethnicity = st.selectbox("Ethnicity", ["Caucasian", "African American", "Asian", "Other"])
-education_level = st.selectbox("Education Level", ["None", "High School", "Bachelor's", "Higher"])
+
 
 # Lifestyle Factors
 st.header("Lifestyle Factors")
