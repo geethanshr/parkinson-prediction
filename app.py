@@ -76,8 +76,8 @@ if st.button("Submit"):
         'MoCA': moca,
         'Tremor': yes_no_to_numeric(tremor),
         'Bradykinesia': yes_no_to_numeric(bradykinesia),
-        'UPDRS': updrs,
-        'PosturalInstability': yes_no_to_numeric(postural_instability)
+        'PosturalInstability': yes_no_to_numeric(postural_instability),
+         'UPDRS': updrs,
     }
 
     # Select model and features
