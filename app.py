@@ -10,7 +10,7 @@ def load_model(model_file):
     return model
 
 # Load the model and scaler
-model = load_model('model.pkl')
+model = load_model('model1.pkl')
 scaler = model.named_steps['scaler']  # Assuming 'scaler' is the name of your StandardScaler step
 
 # Define your Streamlit app
