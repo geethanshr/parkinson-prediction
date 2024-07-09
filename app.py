@@ -55,8 +55,8 @@ cholesterol_triglycerides = st.slider("Triglycerides (mg/dL)", 50, 400)
 
 # Cognitive and Functional Assessments
 st.header("Cognitive and Functional Assessments")
-updrs = st.slider("UPDRS Score (0-199)", 0, 199)
-moca = st.slider("MoCA Score (0-30)", 0, 30)
+updrs = st.number_input("UPDRS", min_value=0.0, max_value=199.0, step=0.5)
+moca = st.number_input("BMI", min_value=0.0, max_value=30.0, step=0.1)
 functional_assessment = st.slider("Functional Assessment Score (0-10)", 0, 10)
 
 # Symptoms
