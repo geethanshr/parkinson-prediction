@@ -119,19 +119,6 @@ if selected == "Risk Assessment":
         st.write("### Prediction Result")
         st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
 
-elif selected == "Statistics":
-
-# Function to create a card-like layout
-def display_card(title, value):
-    st.markdown(
-        f"""
-        <div style="background-color: #f0f0f5; padding: 10px 10px 10px 10px; border-radius: 5px; text-align: center;">
-            <h3 style="color: #333333;">{title}</h3>
-            <p style="font-size: 24px; font-weight: bold; color: #4CAF50;">{value}</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
 
 # Page for Statistics
 if selected == "Statistics":
