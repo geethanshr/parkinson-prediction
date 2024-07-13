@@ -122,17 +122,19 @@ if selected == "Risk Assessment":
 elif selected == "Statistics":
 
     # Function to create a card-like layout
-    def display_card(title, value):
-        st.markdown(
-            f"""
-            <div style="background-color: #f0f0f5; padding: 10px 10px 10px 10px; border-radius: 5px; text-align: center;">
-                <h3 style="color: #333333;">{title}</h3>
-                <p style="font-size: 24px; font-weight: bold; color: #4CAF50;">{value}</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    
+def display_card(title, value):
+    st.markdown(
+        f"""
+        <div style="background-color: #f0f0f5; padding: 10px 10px 10px 10px; border-radius: 5px; text-align: center;">
+            <h3 style="color: #333333;">{title}</h3>
+            <p style="font-size: 24px; font-weight: bold; color: #4CAF50;">{value}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Page for Statistics
+if selected == "Statistics":
     # General statistics
     st.title("Statistics")
     st.write("### General Statistics")
@@ -151,40 +153,42 @@ elif selected == "Statistics":
     
     with col4:
         display_card("Average LDL cholesterol level", "126.15 mg/dL")
-
-
+    
+    # Create pie charts
+    st.write("### Distributions")
+    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
+    
     # Gender Distribution
     gender_labels = ['Male', 'Female']
     gender_sizes = [50.74, 49.26]
     gender_colors = ['#ff9999','#66b3ff']
     gender_explode = (0.1, 0)  # explode 1st slice
-
+    
     axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
     axs[0].set_title('Gender Distribution')
-
+    
     # Age Distribution
     age_labels = ['70-79', '80-89', '50-59', '60-69']
     age_sizes = [26.22, 25.08, 24.94, 23.75]
     age_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     age_explode = (0.1, 0, 0, 0)  # explode 1st slice
-
+    
     axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
     axs[1].set_title('Age Distribution')
-
+    
     # Ethnic Diversity
     eth_labels = ['Caucasian', 'African American', 'Asian', 'Others']
     eth_sizes = [60.33, 20.19, 9.36, 10.12]
     eth_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
-
+    
     axs[2].pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
     axs[2].set_title('Ethnic Diversity')
-
+    
     # Adjust layout to ensure the plots fit well
     plt.tight_layout()
-
+    
     st.pyplot(fig)
-
