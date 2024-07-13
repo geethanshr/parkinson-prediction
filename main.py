@@ -128,3 +128,4 @@ elif selected == "Statistics":
     display_general_statistics()
     display_distributions()
     display_parkinsons_diagnosis()
+    display_diagnosis_by_age()
