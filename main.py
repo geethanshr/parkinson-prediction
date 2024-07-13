@@ -5,7 +5,7 @@ import numpy as np
 from streamlit_option_menu import option_menu
 
 # Import graphing functions
-from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis, display_diagnosis_by_age
+from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis, display_diagnosis_by_age,display_diagnosis_by_eth
 
 # Load the models
 with open('model1.pkl', 'rb') as f:
