@@ -148,7 +148,7 @@ elif selected == "Statistics":
     fig2, ax2 = plt.subplots()
     ax2.pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
             autopct='%1.1f%%', shadow=True, startangle=140)
-    ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    #ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     st.pyplot(fig2)
 
     st.write("### Ethnic Diversity")
