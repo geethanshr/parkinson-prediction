@@ -81,3 +81,35 @@ def display_parkinsons_diagnosis():
                         ha='center', va='bottom')
 
     st.pyplot(fig)
+
+def display_diagnosis_by_age():
+    st.write("### Parkinson's Diagnosis by Gender")
+    labels = ['50','60','70-79', '80']
+    no = [243, 176,190,192]
+    yes = [282, 324,362,336]
+
+    x = np.arange(len(labels))  # the label locations
+    width = 0.35  # the width of the bars
+
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(x - width/2, no, width, label='No')
+    rects2 = ax.bar(x + width/2, yes, width, label='Yes')
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_xlabel('Gender')
+    ax.set_ylabel('Number of Subjects Diagnosed')
+    ax.set_title("Parkinson's Diagnosis by Age Brackets")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
+
+    for rects in [rects1, rects2]:
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
+
+    st.pyplot(fig)
