@@ -128,8 +128,11 @@ elif selected == "Statistics":
     
     col1.metric("Total number of test subjects", "2105")
     col2.metric("Average diet quality score", "4.91")
-    col3.metric("Average HDL cholesterol level", "59.67 mg/dL")
-    col1.metric("Average LDL cholesterol level", "126.15 mg/dL")
+    col1.metric("Average HDL cholesterol level", "59.67 mg/dL")
+    col2.metric("Average LDL cholesterol level", "126.15 mg/dL")
+    col1.metric("Average Systolic BP", "133.72 mmHg")
+    col2.metric("Average Diastolic BP", "90.25 mmHg")
+    
 
     st.write("### Distributions")
     fig, axs = plt.subplots(1, 3, figsize=(20, 5))
