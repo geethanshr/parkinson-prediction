@@ -120,13 +120,37 @@ if selected == "Risk Assessment":
         st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
 
 elif selected == "Statistics":
-    st.title("Statistics")
-    st.write("### General Statistics")
-    st.write("Total number of test subjects: 2105")
-    st.write("Average diet quality score: 4.91")
-    st.write("Average HDL cholesterol level: 59.67 mg/dL")
-    st.write("Average LDL cholesterol level: 126.15 mg/dL")
 
+    # Function to create a card-like layout
+def display_card(title, value):
+    st.markdown(
+        f"""
+        <div style="background-color: #f0f0f5; padding: 10px 10px 10px 10px; border-radius: 5px; text-align: center;">
+            <h3 style="color: #333333;">{title}</h3>
+            <p style="font-size: 24px; font-weight: bold; color: #4CAF50;">{value}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# General statistics
+st.title("Statistics")
+st.write("### General Statistics")
+
+# Using st.columns to create a row of cards
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    display_card("Total number of test subjects", "2105")
+
+with col2:
+    display_card("Average diet quality score", "4.91")
+
+with col3:
+    display_card("Average HDL cholesterol level", "59.67 mg/dL")
+
+with col4:
+    display_card("Average LDL cholesterol level", "126.15 mg/dL")
     st.write("### Distributions")
     fig, axs = plt.subplots(1, 3, figsize=(20, 5))
 
