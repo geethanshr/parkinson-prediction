@@ -84,7 +84,7 @@ def display_parkinsons_diagnosis():
 
 def display_diagnosis_by_age():
     st.write("### Parkinson's Diagnosis by Age Brackets")
-    labels = ['50', '60', '70-79', '80']
+    labels = ['50-59', '60-69', '70-79', '80-89']
     no = [243, 176, 190, 192]
     yes = [282, 324, 362, 336]
 
@@ -113,3 +113,45 @@ def display_diagnosis_by_age():
                         ha='center', va='bottom')
 
     st.pyplot(fig)
+
+def display_diagnosis_by_eth():
+    st.write("### Diagnosis Distribution among each Ethnic Group")
+    labels = ['Caucasian', 'African American', 'Others', 'Asian']
+    no = [38.58, 35.29, 41.31, 37.06]
+    yes = [61.42, 64.71, 58.69, 62.94]
+
+    # Convert percentages to proportions for the 100% stacked column chart
+    no_proportions = np.array(no) / 100
+    yes_proportions = np.array(yes) / 100
+
+    x = np.arange(len(labels))  # the label locations
+    width = 0.5  # the width of the bars
+
+    fig, ax = plt.subplots()
+
+    ax.bar(x, no_proportions, width, label='No', color='#1f77b4')
+    ax.bar(x, yes_proportions, width, bottom=no_proportions, label='Yes', color='#ff7f0e')
+
+    # Add some text for labels, title, and custom x-axis tick labels, etc.
+    ax.set_xlabel('Ethnic Group')
+    ax.set_ylabel('Proportion of Subjects Diagnosed')
+    ax.set_title("Diagnosis Distribution among each Ethnic Group")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
+
+    # Add annotation for each bar segment
+    for i in range(len(labels)):
+        ax.annotate(f'{no[i]}%',
+                    xy=(x[i], no_proportions[i] / 2),
+                    xytext=(0, 0),
+                    textcoords="offset points",
+                    ha='center', va='center', color='white', weight='bold')
+        ax.annotate(f'{yes[i]}%',
+                    xy=(x[i], no_proportions[i] + yes_proportions[i] / 2),
+                    xytext=(0, 0),
+                    textcoords="offset points",
+                    ha='center', va='center', color='white', weight='bold')
+
+    st.pyplot(fig)
+
