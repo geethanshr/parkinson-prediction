@@ -122,11 +122,14 @@ if selected == "Risk Assessment":
 
 elif selected == "Statistics":
     st.title("Statistics")
+
     st.write("### General Statistics")
-    st.write("Total number of test subjects: 2105")
-    st.write("Average diet quality score: 4.91")
-    st.write("Average HDL cholesterol level: 59.67 mg/dL")
-    st.write("Average LDL cholesterol level: 126.15 mg/dL")
+    col1, col2, col3 = st.columns(3)
+    
+    col1.metric("Total number of test subjects", "2105")
+    col2.metric("Average diet quality score", "4.91")
+    col3.metric("Average HDL cholesterol level", "59.67 mg/dL")
+    col1.metric("Average LDL cholesterol level", "126.15 mg/dL")
 
     st.write("### Distributions")
     fig, axs = plt.subplots(1, 3, figsize=(20, 5))
@@ -165,3 +168,4 @@ elif selected == "Statistics":
     plt.tight_layout()
 
     st.pyplot(fig)
+
