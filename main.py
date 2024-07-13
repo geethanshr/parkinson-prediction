@@ -5,7 +5,7 @@ import numpy as np
 from streamlit_option_menu import option_menu
 
 # Import graphing functions
-from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis
+from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis, display_diagnosis_by_age
 
 # Load the models
 with open('model1.pkl', 'rb') as f:
@@ -69,27 +69,20 @@ if selected == "Risk Assessment":
 
     # Cognitive and Functional Assessments
     st.header("Cognitive and Functional Assessments")
-    updrs = st.number_input("UPDRS", min_value=0.0, max_value=199.0, step=0.5)
-    moca = st.number_input("MoCA", min_value=0.0, max_value=30.0, step=0.1)
     functional_assessment = st.slider("Functional Assessment Score (0-10)", 0, 10)
-
-    # Symptoms
-    st.header("Symptoms")
-    tremor = st.radio("Tremor", ["No", "Yes"])
+    moca = st.slider("MoCA Score (0-30)", 0, 30)
     rigidity = st.radio("Rigidity", ["No", "Yes"])
+    tremor = st.radio("Tremor", ["No", "Yes"])
     bradykinesia = st.radio("Bradykinesia", ["No", "Yes"])
+    updrs = st.slider("UPDRS Score (0-100)", 0, 100)
     postural_instability = st.radio("Postural Instability", ["No", "Yes"])
-    speech_problems = st.radio("Speech Problems", ["No", "Yes"])
-    sleep_disorders = st.radio("Sleep Disorders", ["No", "Yes"])
-    constipation = st.radio("Constipation", ["No", "Yes"])
 
-    # Helper function to convert Yes/No to 1/0
-    def yes_no_to_numeric(value):
-        return 1 if value == "Yes" else 0
+    # Predict button
+    if st.button("Predict"):
+        # Convert categorical variables to numerical
+        def yes_no_to_numeric(value):
+            return 1 if value == "Yes" else 0
 
-    # Prediction logic
-    if st.button("Submit"):
-        # Collect input data
         input_data = {
             'Rigidity': yes_no_to_numeric(rigidity),
             'FunctionalAssessment': functional_assessment,
