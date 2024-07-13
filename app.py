@@ -127,41 +127,41 @@ elif selected == "Statistics":
     st.write("Average HDL cholesterol level: 59.67 mg/dL")
     st.write("Average LDL cholesterol level: 126.15 mg/dL")
 
-    st.write("### Gender Distribution")
+    st.write("### Distributions")
+    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
+
+    # Gender Distribution
     gender_labels = ['Male', 'Female']
     gender_sizes = [50.74, 49.26]
     gender_colors = ['#ff9999','#66b3ff']
     gender_explode = (0.1, 0)  # explode 1st slice
 
-    fig1, ax1 = plt.subplots()
-    ax1.pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
-            autopct='%1.1f%%', shadow=True, startangle=140)
-    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    st.pyplot(fig1)
+    axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[0].set_title('Gender Distribution')
 
-    st.write("### Age Distribution")
+    # Age Distribution
     age_labels = ['70-79', '80-89', '50-59', '60-69']
     age_sizes = [26.22, 25.08, 24.94, 23.75]
     age_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     age_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
-    fig2, ax2 = plt.subplots()
-    ax2.pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
-            autopct='%1.1f%%', shadow=True, startangle=140)
-    #ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    st.pyplot(fig2)
+    axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[1].set_title('Age Distribution')
 
-    st.write("### Ethnic Diversity")
+    # Ethnic Diversity
     eth_labels = ['Caucasian', 'African American', 'Asian', 'Others']
     eth_sizes = [60.33, 20.19, 9.36, 10.12]
     eth_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
-    fig3, ax2 = plt.subplots()
-    ax2.pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
-            autopct='%1.1f%%', shadow=True, startangle=140)
-   # ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    st.pyplot(fig3)
+    axs[2].pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[2].set_title('Ethnic Diversity')
 
+    # Adjust layout to ensure the plots fit well
+    plt.tight_layout()
 
+    st.pyplot(fig)
 
