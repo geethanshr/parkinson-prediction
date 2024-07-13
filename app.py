@@ -130,8 +130,8 @@ elif selected == "Statistics":
     col2.metric("Average diet quality score", "4.91")
     col1.metric("Average HDL cholesterol level", "59.67 mg/dL")
     col2.metric("Average LDL cholesterol level", "126.15 mg/dL")
-    col1.metric("Average Systolic BP", "133.72 mmHg")
-    col2.metric("Average Diastolic BP", "90.25 mmHg")
+    col1.metric("Average Systolic BP", "133.72 mm Hg")
+    col2.metric("Average Diastolic BP", "90.25 mm Hg")
     
 
     st.write("### Distributions")
@@ -172,3 +172,35 @@ elif selected == "Statistics":
 
     st.pyplot(fig)
 
+
+    # Stacked Bar Chart for Parkinson's Diagnosis
+    st.write("### Parkinson's Diagnosis by Gender")
+    labels = ['Male', 'Female']
+    no = [415, 386]
+    yes = [653, 651]
+
+    x = np.arange(len(labels))  # the label locations
+    width = 0.35  # the width of the bars
+
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(x - width/2, no, width, label='No')
+    rects2 = ax.bar(x + width/2, yes, width, label='Yes')
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_xlabel('Gender')
+    ax.set_ylabel('Number of Subjects')
+    ax.set_title("Parkinson's Diagnosis by Gender")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
+
+    for rects in [rects1, rects2]:
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
+
+    st.pyplot(fig)
