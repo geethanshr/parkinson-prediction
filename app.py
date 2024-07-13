@@ -158,9 +158,9 @@ elif selected == "Statistics":
     eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
     fig3, ax2 = plt.subplots()
-    ax2.pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
+    ax2.pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
             autopct='%1.1f%%', shadow=True, startangle=140)
-    ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+   # ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     st.pyplot(fig3)
 
 
