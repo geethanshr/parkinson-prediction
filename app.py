@@ -150,3 +150,18 @@ elif selected == "Statistics":
             autopct='%1.1f%%', shadow=True, startangle=140)
     ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     st.pyplot(fig2)
+
+      st.write("### Ethnic Diversity")
+    eth_labels = ['Caucasian', 'African American', 'Asian', 'Others']
+    eth_sizes = [60.33, 20.19, 9.36, 10.12]
+    eth_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
+
+    fig3, ax2 = plt.subplots()
+    ax2.pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
+            autopct='%1.1f%%', shadow=True, startangle=140)
+    ax2.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    st.pyplot(fig3)
+
+
+
