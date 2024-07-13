@@ -121,7 +121,7 @@ if selected == "Risk Assessment":
 
 elif selected == "Statistics":
 
-    # Function to create a card-like layout
+# Function to create a card-like layout
 def display_card(title, value):
     st.markdown(
         f"""
