@@ -94,4 +94,37 @@ if selected == "Risk Assessment":
             'Rigidity': yes_no_to_numeric(rigidity),
             'FunctionalAssessment': functional_assessment,
             'MoCA': moca,
-           
+            'Tremor': yes_no_to_numeric(tremor),
+            'Bradykinesia': yes_no_to_numeric(bradykinesia),
+            'UPDRS': updrs,
+            'PosturalInstability': yes_no_to_numeric(postural_instability)
+        }
+
+        # Select model and features
+        if functional_assessment < 5 and updrs > 50:
+            model = model1
+            features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
+        elif yes_no_to_numeric(tremor) == 1:
+            model = model2
+            features = ['UPDRS', 'Rigidity', 'FunctionalAssessment']
+        else:
+            model = model3
+            features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
+
+        # Prepare data for prediction
+        data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
+
+        # Make prediction
+        prediction = model.predict(data)
+
+        # Display prediction result
+        st.write("### Prediction Result")
+        st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
+
+
+elif selected == "Statistics":
+    st.title("Statistics")
+
+    display_general_statistics()
+    display_distributions()
+    display_parkinsons_diagnosis()
