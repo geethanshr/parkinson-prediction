@@ -122,3 +122,6 @@ elif selected == "Statistics":
     display_distributions()
     display_parkinsons_diagnosis()
     display_diagnosis_by_age()
+    display_diagnosis_by_eth()
+
+   
