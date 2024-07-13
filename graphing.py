@@ -1,124 +1,115 @@
-import streamlit as st
-import pickle
-import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
-from streamlit_option_menu import option_menu
+import streamlit as st
 
-# Import graphing functions
-from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis, display_diagnosis_by_age
+def display_general_statistics():
+    st.write("### General Statistics")
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Total number of test subjects", "2105")
+    col2.metric("Average diet quality score", "4.91")
+    col1.metric("Average HDL cholesterol level", "59.67 mg/dL")
+    col2.metric("Average LDL cholesterol level", "126.15 mg/dL")
+    col1.metric("Average Systolic BP", "133.72 mm Hg")
+    col2.metric("Average Diastolic BP", "90.25 mm Hg")
 
-# Load the models
-with open('model1.pkl', 'rb') as f:
-    model1 = pickle.load(f)
+def display_distributions():
+    st.write("### Distributions")
+    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
 
-with open('model2.pkl', 'rb') as f:
-    model2 = pickle.load(f)
+    # Gender Distribution
+    gender_labels = ['Male', 'Female']
+    gender_sizes = [50.74, 49.26]
+    gender_colors = ['#ff9999','#66b3ff']
+    gender_explode = (0.1, 0)  # explode 1st slice
 
-with open('model3.pkl', 'rb') as f:
-    model3 = pickle.load(f)
+    axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[0].set_title('Gender Distribution')
 
-# Sidebar menu
-with st.sidebar:
-    selected = option_menu(
-        "Main Menu",
-        ["Risk Assessment", "Statistics"],
-        icons=["house", "bar-chart"],
-        menu_icon="cast",
-        default_index=0
-    )
+    # Age Distribution
+    age_labels = ['70-79', '80-89', '50-59', '60-69']
+    age_sizes = [26.22, 25.08, 24.94, 23.75]
+    age_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    age_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
-if selected == "Risk Assessment":
-    st.title("Parkinson's Disease Risk Assessment")
+    axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[1].set_title('Age Distribution')
 
-    # General Details
-    st.header("General Details")
-    patient_name = st.text_input("Patient Name")
+    # Ethnic Diversity
+    eth_labels = ['Caucasian', 'African American', 'Asian', 'Others']
+    eth_sizes = [60.33, 20.19, 9.36, 10.12]
+    eth_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
-    # Demographic Details
-    st.header("Demographic Details")
-    age = st.number_input("Age", min_value=0, max_value=120, step=1)
-    gender = st.selectbox("Gender", ["Male", "Female", "Other"])
-    ethnicity = st.selectbox("Ethnicity", ["Caucasian", "African American", "Asian", "Other"])
+    axs[2].pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[2].set_title('Ethnic Diversity')
 
-    # Lifestyle Factors
-    st.header("Lifestyle Factors")
-    bmi = st.number_input("BMI", min_value=0.0, max_value=100.0, step=0.1)
-    smoking = st.radio("Smoking", ["No", "Yes"])
-    alcohol_consumption = st.slider("Alcohol Consumption (units per week)", 0, 20)
-    physical_activity = st.slider("Physical Activity (hours per week)", 0, 10)
-    diet_quality = st.slider("Diet Quality (0-10)", 0, 10)
-    sleep_quality = st.slider("Sleep Quality (4-10)", 4, 10)
+    # Adjust layout to ensure the plots fit well
+    plt.tight_layout()
+    st.pyplot(fig)
 
-    # Medical History
-    st.header("Medical History")
-    family_history_parkinsons = st.radio("Family History of Parkinson's Disease", ["No", "Yes"])
-    traumatic_brain_injury = st.radio("History of Traumatic Brain Injury", ["No", "Yes"])
-    hypertension = st.radio("Hypertension", ["No", "Yes"])
-    diabetes = st.radio("Diabetes", ["No", "Yes"])
-    depression = st.radio("Depression", ["No", "Yes"])
-    stroke = st.radio("History of Stroke", ["No", "Yes"])
+def display_parkinsons_diagnosis():
+    st.write("### Parkinson's Diagnosis by Gender")
+    labels = ['Male', 'Female']
+    no = [415, 386]
+    yes = [653, 651]
 
-    # Clinical Measurements
-    st.header("Clinical Measurements")
-    systolic_bp = st.slider("Systolic Blood Pressure (mmHg)", 90, 180)
-    diastolic_bp = st.slider("Diastolic Blood Pressure (mmHg)", 60, 120)
-    cholesterol_total = st.slider("Total Cholesterol (mg/dL)", 150, 300)
-    cholesterol_ldl = st.slider("LDL Cholesterol (mg/dL)", 50, 200)
-    cholesterol_hdl = st.slider("HDL Cholesterol (mg/dL)", 20, 100)
-    cholesterol_triglycerides = st.slider("Triglycerides (mg/dL)", 50, 400)
+    x = np.arange(len(labels))  # the label locations
+    width = 0.35  # the width of the bars
 
-    # Cognitive and Functional Assessments
-    st.header("Cognitive and Functional Assessments")
-    functional_assessment = st.slider("Functional Assessment Score (0-10)", 0, 10)
-    moca = st.slider("MoCA Score (0-30)", 0, 30)
-    rigidity = st.radio("Rigidity", ["No", "Yes"])
-    tremor = st.radio("Tremor", ["No", "Yes"])
-    bradykinesia = st.radio("Bradykinesia", ["No", "Yes"])
-    updrs = st.slider("UPDRS Score (0-100)", 0, 100)
-    postural_instability = st.radio("Postural Instability", ["No", "Yes"])
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(x - width/2, no, width, label='No')
+    rects2 = ax.bar(x + width/2, yes, width, label='Yes')
 
-    # Predict button
-    if st.button("Predict"):
-        # Convert categorical variables to numerical
-        def yes_no_to_numeric(value):
-            return 1 if value == "Yes" else 0
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_xlabel('Gender')
+    ax.set_ylabel('Number of Subjects')
+    ax.set_title("Parkinson's Diagnosis by Gender")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
 
-        input_data = {
-            'Rigidity': yes_no_to_numeric(rigidity),
-            'FunctionalAssessment': functional_assessment,
-            'MoCA': moca,
-            'Tremor': yes_no_to_numeric(tremor),
-            'Bradykinesia': yes_no_to_numeric(bradykinesia),
-            'UPDRS': updrs,
-            'PosturalInstability': yes_no_to_numeric(postural_instability)
-        }
+    for rects in [rects1, rects2]:
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
 
-        # Select model and features
-        if functional_assessment < 5 and updrs > 50:
-            model = model1
-            features = ['Rigidity', 'FunctionalAssessment', 'MoCA', 'Tremor', 'Bradykinesia']
-        elif yes_no_to_numeric(tremor) == 1:
-            model = model2
-            features = ['UPDRS', 'Rigidity', 'FunctionalAssessment']
-        else:
-            model = model3
-            features = ['Rigidity', 'Bradykinesia', 'PosturalInstability', 'UPDRS']
+    st.pyplot(fig)
 
-        # Prepare data for prediction
-        data = pd.DataFrame({feature: [input_data[feature]] for feature in features})
+def display_diagnosis_by_age():
+    st.write("### Parkinson's Diagnosis by Age Brackets")
+    labels = ['50', '60', '70-79', '80']
+    no = [243, 176, 190, 192]
+    yes = [282, 324, 362, 336]
 
-        # Make prediction
-        prediction = model.predict(data)
+    x = np.arange(len(labels))  # the label locations
+    width = 0.35  # the width of the bars
 
-        # Display prediction result
-        st.write("### Prediction Result")
-        st.write(f"The predicted diagnosis for Parkinson's Disease is: {'Yes' if prediction[0] == 1 else 'No'}")
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(x - width/2, no, width, label='No')
+    rects2 = ax.bar(x + width/2, yes, width, label='Yes')
 
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_xlabel('Age Bracket')
+    ax.set_ylabel('Number of Subjects Diagnosed')
+    ax.set_title("Parkinson's Diagnosis by Age Brackets")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
 
-elif selected == "Statistics":
-    st.title("Statistics")
+    for rects in [rects1, rects2]:
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
 
-    display_general_statistics()
-    display_distributions()
-    display_parkinsons_diagnosis()
-    display_diagnosis_by_age()
+    st.pyplot(fig)
