@@ -160,10 +160,10 @@ def eda():
     fig, axs = plt.subplots(1, 3, figsize=(20, 5))
 
     # Gender Distribution
-    dist_labels = ['Diabetes-ve Depresion-ve', 'Diabetes+ve Depresion+ve','Diabetes+ve Depression-ve','Diabetes-ve Depresion+ve']
-    dist_sizes = [68.12,3.47,11.39,17.05]
-    dist_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
-    dist_explode = (0.1, 0)  # explode 1st slice
+    gender_labels = ['Diabetes-ve Depresion-ve', 'Diabetes+ve Depresion+ve','Diabetes+ve Depression-ve','Diabetes-ve Depresion+ve']
+    gender_sizes = [68.12,3.47,11.39,17.05]
+    gender_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    gender_explode = (0.1, 0)  # explode 1st slice
 
     axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
