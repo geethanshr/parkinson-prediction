@@ -127,6 +127,6 @@ elif selected == "Statistics":
 elif selected == "Exploratory Analysis":
     st.title("Exploratory Data Analysis")
 
-    display_distributions()
+    eda()
    
    
