@@ -174,6 +174,3 @@ def eda():
     
     # Display the plot in Streamlit
     st.pyplot(fig)
-
-# Call the eda function to display the pie chart
-eda()
