@@ -160,34 +160,34 @@ def eda():
     fig, axs = plt.subplots(1, 3, figsize=(20, 5))
 
     # Gender Distribution
-    gender_labels = ['Male', 'Female']
-    gender_sizes = [50.74, 49.26]
-    gender_colors = ['#ff9999','#66b3ff']
-    gender_explode = (0.1, 0)  # explode 1st slice
+    dist_labels = ['Diabetes-ve Depresion-ve', 'Diabetes+ve Depresion+ve','Diabetes+ve Depression-ve','Diabetes-ve Depresion+ve']
+    dist_sizes = [68.12,3.47,11.39,17.05]
+    dist_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    dist_explode = (0.1, 0)  # explode 1st slice
 
     axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[0].set_title('Gender Distribution')
+    axs[0].set_title('Diabetes Depression')
 
     # Age Distribution
-    age_labels = ['70-79', '80-89', '50-59', '60-69']
-    age_sizes = [26.22, 25.08, 24.94, 23.75]
+    age_labels = ['Diabetes-ve Hypertension-ve', 'Diabetes+ve Hypertension+ve', 'Diabetes+ve Hypertension-ve', 'Diabetes-ve Hypertension+ve']
+    age_sizes = [72.78, 2.19, 12.64, 12.40]
     age_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     age_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
     axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[1].set_title('Age Distribution')
+    axs[1].set_title('Distribution Diabetes and Hypertension')
 
     # Ethnic Diversity
-    eth_labels = ['Caucasian', 'African American', 'Asian', 'Others']
-    eth_sizes = [60.33, 20.19, 9.36, 10.12]
+    eth_labels = ['Sleep Disorder-ve Hypertension-ve', 'Sleep Disorder+ve Hypertension+ve', 'Sleep Disorder+ve Hypertension-ve', 'Sleep Disorder-ve Hypertension+ve']
+    eth_sizes = [64.61, 3.71, 20.81, 10.88]
     eth_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
 
     axs[2].pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[2].set_title('Ethnic Diversity')
+    axs[2].set_title('Distribution Sleep Disorder Hypertension')
 
     # Adjust layout to ensure the plots fit well
     plt.tight_layout()
