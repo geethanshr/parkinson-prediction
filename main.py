@@ -124,4 +124,10 @@ elif selected == "Statistics":
     display_diagnosis_by_age()
     display_diagnosis_by_eth()
 
+elif selected == "Exploratory Analysis":
+    st.title("Exploratory Data Analysis")
+
+  #  smoking_alcohol_eda()
+  #  systol_diabetes_eda()
+   
    
