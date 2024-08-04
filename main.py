@@ -21,8 +21,8 @@ with open('model3.pkl', 'rb') as f:
 with st.sidebar:
     selected = option_menu(
         "Main Menu",
-        ["Risk Assessment", "Statistics"],
-        icons=["house", "bar-chart"],
+        ["Risk Assessment", "Statistics","Exploratory Analysis"],
+        icons=["house", "bar-chart","cloud"],
         menu_icon="cast",
         default_index=0
     )
