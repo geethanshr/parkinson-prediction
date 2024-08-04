@@ -155,6 +155,12 @@ def display_diagnosis_by_eth():
 
     st.pyplot(fig)
     
+elif selected == "Exploratory Analysis":
+    st.title("Exploratory Data Analysis")
+
+    eda()
+
+# Define the eda function
 def eda():
     st.write("### Pie Distributions")
     
