@@ -169,4 +169,4 @@ def eda():
     
     # Display the plot in Streamlit
     st.pyplot(fig)
-
+eda()
