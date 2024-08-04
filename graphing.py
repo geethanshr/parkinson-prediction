@@ -155,7 +155,7 @@ def display_diagnosis_by_eth():
 
     st.pyplot(fig)
     
-def eda_ana():
+def eda():
     st.write("### Pie Distributions")
     fig, axs = plt.subplots(1, 3, figsize=(20, 5))
 
