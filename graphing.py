@@ -156,19 +156,17 @@ def display_diagnosis_by_eth():
     st.pyplot(fig)
     
 def eda():
-    st.write("### Pie Distributions")
-    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
-
-    
-    # Age Distribution
-    diagnosed_labels = ['Not Diagnosed', 'Not Diagnosed']
-    diagnosed_sizes = [63.64, 36.36]
-    diagnosed_colors = ['#ff9999','#66b3ff']
+# Pie chart data
+    diagnosed_labels = ['Diagnosed', 'Not Diagnosed']
+    diagnosed_sizes = [36.36, 63.64]  # Update this with your actual data
+    diagnosed_colors = ['#ff9999', '#66b3ff']
     diagnosed_explode = (0.1, 0)  # explode 1st slice
-
-    axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
-               autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[1].set_title('High BP and Diabetes')
     
+    # Plotting the pie chart
+    ax.pie(diagnosed_sizes, explode=diagnosed_explode, labels=diagnosed_labels, colors=diagnosed_colors,
+           autopct='%1.1f%%', shadow=True, startangle=140)
+    ax.set_title('High BP and Diabetes Distribution')
+    
+    # Display the plot in Streamlit
     st.pyplot(fig)
 
