@@ -127,7 +127,7 @@ elif selected == "Statistics":
 elif selected == "Exploratory Analysis":
     st.title("Exploratory Data Analysis")
 
-  #  smoking_alcohol_eda()
+    eda()
   #  systol_diabetes_eda()
    
    
