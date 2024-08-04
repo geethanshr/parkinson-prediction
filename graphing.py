@@ -157,6 +157,9 @@ def display_diagnosis_by_eth():
     
 def eda():
 # Pie chart data
+    st.write("### Pie Distributions")
+    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
+
     diagnosed_labels = ['Diagnosed', 'Not Diagnosed']
     diagnosed_sizes = [36.36, 63.64]  # Update this with your actual data
     diagnosed_colors = ['#ff9999', '#66b3ff']
