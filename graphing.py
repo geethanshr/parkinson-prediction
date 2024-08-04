@@ -155,7 +155,7 @@ def display_diagnosis_by_eth():
 
     st.pyplot(fig)
     
-def eda()
+def eda():
 # Pie chart data
     diagnosed_labels = ['Diagnosed', 'Not Diagnosed']
     diagnosed_sizes = [36.36, 63.64]  # Update this with your actual data
