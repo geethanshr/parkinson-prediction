@@ -128,6 +128,5 @@ elif selected == "Exploratory Analysis":
     st.title("Exploratory Data Analysis")
 
     eda()
-#  systol_diabetes_eda()
    
    
