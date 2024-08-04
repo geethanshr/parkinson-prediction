@@ -169,3 +169,6 @@ def eda():
     axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
     axs[1].set_title('High BP and Diabetes')
+    
+    st.pyplot(fig)
+
