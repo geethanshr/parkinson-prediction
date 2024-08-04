@@ -157,54 +157,44 @@ def display_diagnosis_by_eth():
     
 def eda():
     st.write("### Pie Distributions")
-    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
+    
+    fig, axs = plt.subplots(2, 2, figsize=(20, 10))
 
-    # Gender Distribution
-    gender_labels = ['Diabetes-ve Depresion-ve', 'Diabetes+ve Depresion+ve','Diabetes+ve Depression-ve','Diabetes-ve Depresion+ve']
-    gender_sizes = [68.12,3.47,11.39,17.05]
-    gender_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
-    gender_explode = (0.1, 0,0,0)  # explode 1st slice
+    # Distribution Diabetes and Depression
+    labels1 = ['Diabetes-ve Depression-ve', 'Diabetes+ve Depression+ve', 'Diabetes+ve Depression-ve', 'Diabetes-ve Depression+ve']
+    sizes1 = [68.12, 3.47, 11.39, 17.05]
+    colors1 = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    explode1 = (0.1, 0, 0, 0)  # explode 1st slice
 
-    axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
-               autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[0].set_title('Diabetes Depression')
+    axs[0, 0].pie(sizes1, explode=explode1, labels=labels1, colors=colors1, autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[0, 0].set_title('Diabetes and Depression')
 
-    # Age Distribution
-    age_labels = ['Diabetes-ve Hypertension-ve', 'Diabetes+ve Hypertension+ve', 'Diabetes+ve Hypertension-ve', 'Diabetes-ve Hypertension+ve']
-    age_sizes = [72.78, 2.19, 12.64, 12.40]
-    age_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
-    age_explode = (0.1, 0, 0, 0)  # explode 1st slice
+    # Distribution Diabetes and Hypertension
+    labels2 = ['Diabetes-ve Hypertension-ve', 'Diabetes+ve Hypertension+ve', 'Diabetes+ve Hypertension-ve', 'Diabetes-ve Hypertension+ve']
+    sizes2 = [72.78, 2.19, 12.64, 12.40]
+    colors2 = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    explode2 = (0.1, 0, 0, 0)  # explode 1st slice
 
-    axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
-               autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[1].set_title('Distribution Diabetes and Hypertension')
+    axs[0, 1].pie(sizes2, explode=explode2, labels=labels2, colors=colors2, autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[0, 1].set_title('Distribution Diabetes and Hypertension')
 
-    # Ethnic Diversity
-    eth_labels = ['Sleep Disorder-ve Hypertension-ve', 'Sleep Disorder+ve Hypertension+ve', 'Sleep Disorder+ve Hypertension-ve', 'Sleep Disorder-ve Hypertension+ve']
-    eth_sizes = [64.61, 3.71, 20.81, 10.88]
-    eth_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
-    eth_explode = (0.1, 0, 0, 0)  # explode 1st slice
+    # Distribution Sleep Disorder and Hypertension
+    labels3 = ['Sleep Disorder-ve Hypertension-ve', 'Sleep Disorder+ve Hypertension+ve', 'Sleep Disorder+ve Hypertension-ve', 'Sleep Disorder-ve Hypertension+ve']
+    sizes3 = [64.61, 3.71, 20.81, 10.88]
+    colors3 = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    explode3 = (0.1, 0, 0, 0)  # explode 1st slice
 
-    axs[2].pie(eth_sizes, explode=eth_explode, labels=eth_labels, colors=eth_colors,
-               autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[2].set_title('Distribution Sleep Disorder and Hypertension')
+    axs[1, 0].pie(sizes3, explode=explode3, labels=labels3, colors=colors3, autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[1, 0].set_title('Distribution Sleep Disorder and Hypertension')
 
-    # Adjust layout to ensure the plots fit well
-    plt.tight_layout()
-    st.pyplot(fig)
+    # Distribution Smoking and Hypertension
+    labels4 = ['Smoking-ve Hypertension-ve', 'Smoking+ve Hypertension+ve', 'Smoking+ve Hypertension-ve', 'Smoking-ve Hypertension+ve']
+    sizes4 = [60.14, 4.37, 35.27, 10.21]
+    colors4 = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    explode4 = (0.1, 0, 0, 0)  # explode 1st slice
 
-    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
-
-    # Gender Distribution
-    gender_labels = ['Somking-ve Hypertension-ve', 'Somking+ve Hypertension+ve','Somking+ve Hypertension-ve','Somking-ve Hypertension+ve']
-    gender_sizes = [60.14,4.37,35.27,10.21]
-    gender_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
-    gender_explode = (0.1, 0,0,0)  # explode 1st slice
-
-    axs[0].pie(gender_sizes, explode=gender_explode, labels=gender_labels, colors=gender_colors,
-               autopct='%1.1f%%', shadow=True, startangle=140)
-    axs[0].set_title('Distribution Somking and Hypertension')
-
+    axs[1, 1].pie(sizes4, explode=explode4, labels=labels4, colors=colors4, autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[1, 1].set_title('Distribution Smoking and Hypertension')
 
     # Adjust layout to ensure the plots fit well
     plt.tight_layout()
