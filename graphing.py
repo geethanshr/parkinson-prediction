@@ -163,8 +163,8 @@ def eda():
     # Age Distribution
     diagnosed_labels = ['Not Diagnosed', 'Not Diagnosed']
     diagnosed_sizes = [63.64, 36.36]
-    diagnosed_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
-    diagnosed_explode = (0.1, 0, 0, 0)  # explode 1st slice
+    diagnosed_colors = ['#ff9999','#66b3ff']
+    diagnosed_explode = (0.1, 0)  # explode 1st slice
 
     axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
                autopct='%1.1f%%', shadow=True, startangle=140)
