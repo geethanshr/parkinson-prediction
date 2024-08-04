@@ -154,4 +154,18 @@ def display_diagnosis_by_eth():
                     ha='center', va='center', color='white', weight='bold')
 
     st.pyplot(fig)
+    
+def eda():
+    st.write("### Pie Distributions")
+    fig, axs = plt.subplots(1, 3, figsize=(20, 5))
 
+    
+    # Age Distribution
+    diagnosed_labels = ['Not Diagnosed', 'Not Diagnosed']
+    diagnosed_sizes = [63.64, 36.36]
+    diagnosed_colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    diagnosed_explode = (0.1, 0, 0, 0)  # explode 1st slice
+
+    axs[1].pie(age_sizes, explode=age_explode, labels=age_labels, colors=age_colors,
+               autopct='%1.1f%%', shadow=True, startangle=140)
+    axs[1].set_title('High BP and Diabetes')
