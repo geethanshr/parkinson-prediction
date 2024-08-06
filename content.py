@@ -3,7 +3,7 @@ import streamlit as st
 def by_the_team():
     #st.title("By the Team")
 
-    st.write("### Shivam's Contributions")
+    #st.write("### Geethansh's Contributions")
     st.markdown(
         """
         <div style="border: 1px solid #e6e6e6; padding: 20px; border-radius: 10px;">
@@ -21,17 +21,21 @@ def by_the_team():
         """, 
         unsafe_allow_html=True
     )
-    st.write("### Gourav")
-    st.markdown("""
-    <blockquote>
-        [![Gourav's LinkedIn](https://img.shields.io/badge/Gourav-LinkedIn-blue)](https://www.linkedin.com/in/gourav/)
-        <br><br>
-        **Project Link:** [Project](#)
-        <br><br>
-        **Challenges Tackled:**
-        <br><br>
-        - **Problem 1:** Description of how the problem was solved.
-        <br><br>
-        - **Problem 2:** Description of how the problem was solved.
-    </blockquote>
-    """, unsafe_allow_html=True)
+    #st.write("### Gourav")
+    st.markdown(
+        """
+        <div style="border: 1px solid #e6e6e6; padding: 20px; border-radius: 10px;">
+            <a href="https://www.linkedin.com/in/gourav-pandey-a4505a29a/" target="_blank">
+                <img src="https://media.licdn.com/dms/image/D5603AQFDLRLPwQ3n5A/profile-displayphoto-shrink_400_400/0/1718229540129?e=1728518400&v=beta&t=VFpe8wrta4oPO6ExWyOUVRpLS_IZ7hVvgXhOqdQoz_U" style="width: 100px; height: 100px; vertical-align: middle;">
+                Geethansh's LinkedIn
+            </a>
+            <p><strong>Project Link:</strong> <a href="#">Project</a></p>
+            <p><strong>Challenges Tackled:</strong></p>
+            <ul>
+                <li><strong>Problem 1:</strong> Description of how the problem was solved.</li>
+                <li><strong>Problem 2:</strong> Description of how the problem was solved.</li>
+            </ul>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
