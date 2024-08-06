@@ -27,7 +27,7 @@ def by_the_team():
         <div style="border: 1px solid #e6e6e6; padding: 20px; border-radius: 10px;">
             <a href="https://www.linkedin.com/in/gourav-pandey-a4505a29a/" target="_blank">
                 <img src="https://media.licdn.com/dms/image/D5603AQFDLRLPwQ3n5A/profile-displayphoto-shrink_400_400/0/1718229540129?e=1728518400&v=beta&t=VFpe8wrta4oPO6ExWyOUVRpLS_IZ7hVvgXhOqdQoz_U" style="width: 100px; height: 100px; vertical-align: middle;">
-                Geethansh's LinkedIn
+                Gourav's LinkedIn
             </a>
             <p><strong>Project Link:</strong> <a href="#">Project</a></p>
             <p><strong>Challenges Tackled:</strong></p>
