@@ -31,11 +31,12 @@ def by_the_team():
                 Gourav's LinkedIn
             </a>
             <p><strong>Post Link:</strong> <a href="#">Project</a></p>
-            <p><strong>Challenges Tackled:</strong></p>
-            <ul>
-                <li><strong>Problem 1:</strong> Description of how the problem was solved.</li>
-                <li><strong>Problem 2:</strong> Description of how the problem was solved.</li>
-            </ul>
+            <blockquote>
+                    <p><strong>Challenges Tackled:</strong></p>
+                    <p>"One of the major challenges we faced was integrating multiple data sources. We overcame this by using advanced ETL processes."</p>
+                    <p>"Another challenge was ensuring data privacy and security. We implemented strict access controls and encryption techniques."</p>
+                </blockquote>
+            </div>
         </div>
         """, 
         unsafe_allow_html=True
