@@ -15,7 +15,6 @@ def by_the_team():
             <blockquote>
                     <p><strong>Challenges Tackled:</strong></p>
                     <p>"While Preparing the Model Architecture, to carry EDA leads was a challenge since the models were trained over a smaller data (but more relevant data) for a particular values of features and Diagnosis. Train-Test split within the same data poses often a less accuracy threat compared to the accuracy determined by the project environment."</p>
-                    <p>"The features of the Dataset were less straight forward and more numerically organized that are often not a direct field to ask for the patients. Alcohol Consumption for instance was units per week, Functional Assessment with similar layout were field where the Parameter were numerical but over what span of time and precision they are being determined, couldn't greet a direct address from the team at the initial level"</p>
                 </blockquote>
             </div>
         </div>
@@ -35,7 +34,6 @@ def by_the_team():
             <blockquote>
                     <p><strong>Challenges Tackled:</strong></p>
                     <p>"One of the major challenges we faced was integrating multiple data sources. We overcame this by using advanced ETL processes."</p>
-                    <p>"Another challenge was ensuring data privacy and security. We implemented strict access controls and encryption techniques."</p>
                 </blockquote>
             </div>
         </div>
