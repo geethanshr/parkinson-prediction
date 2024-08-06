@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 
 def display_general_statistics():
-    st.write("### General Statistics")
+    #st.write("### General Statistics")
     col1, col2, col3 = st.columns(3)
     col1.metric("Total number of test subjects", "2105")
     col2.metric("Average diet quality score", "4.91")
