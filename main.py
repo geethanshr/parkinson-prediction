@@ -23,7 +23,7 @@ with st.sidebar:
     selected = option_menu(
         "Main Menu",
         ["Risk Assessment", "Statistics","Exploratory Analysis", "By the Team"],
-        icons=["house", "bar-chart","cloud", "cloud"],
+        icons=["house", "bar-chart","cloud", "heart"],
         menu_icon="cast",
         default_index=0
     )
