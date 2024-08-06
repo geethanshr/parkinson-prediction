@@ -3,7 +3,7 @@ import streamlit as st
 def by_the_team():
     #st.title("By the Team")
 
-    st.write("### Shivam's Contributions")
+    st.write("### Geethansh")
     st.markdown("""
     <blockquote>
         [![Shivam's LinkedIn](https://img.shields.io/badge/Shivam-LinkedIn-blue)](https://www.linkedin.com/in/shivam/)
@@ -18,7 +18,7 @@ def by_the_team():
     </blockquote>
     """, unsafe_allow_html=True)
 
-    st.write("### Gourav's Contributions")
+    st.write("### Gourav")
     st.markdown("""
     <blockquote>
         [![Gourav's LinkedIn](https://img.shields.io/badge/Gourav-LinkedIn-blue)](https://www.linkedin.com/in/gourav/)
