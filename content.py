@@ -7,7 +7,7 @@ def by_the_team():
     st.markdown(
         """
         <div style="border: 1px solid #e6e6e6; padding: 20px; border-radius: 10px;">
-            <a href="https://www.linkedin.com/in/shivam/" target="_blank">
+            <a href="https://www.linkedin.com/in/geethanshr/" target="_blank">
                 <img src="https://www.linkedin.com/favicon.ico" style="width: 24px; height: 24px; vertical-align: middle;">
                 Shivam's LinkedIn
             </a>
