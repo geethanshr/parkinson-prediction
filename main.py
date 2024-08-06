@@ -117,7 +117,7 @@ if selected == "Risk Assessment":
 
 
 elif selected == "Statistics":
-    st.title("General Distributions")
+    st.title("General Statistics")
 
     display_general_statistics()
     display_distributions()
@@ -131,5 +131,5 @@ elif selected == "Exploratory Analysis":
     eda()
    
 elif selected =="The Team":
-    st.title("Contributors")
+    st.title("By the Team")
     by_the_team()
