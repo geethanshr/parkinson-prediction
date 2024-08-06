@@ -5,7 +5,7 @@ import numpy as np
 from streamlit_option_menu import option_menu
 
 # Import graphing functions
-from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis, display_diagnosis_by_age,display_diagnosis_by_eth, eda
+from graphing import display_general_statistics, display_distributions, display_parkinsons_diagnosis, display_diagnosis_by_age,display_diagnosis_by_eth, eda, by_the_creators
 
 # Load the models
 with open('model1.pkl', 'rb') as f:
@@ -21,8 +21,8 @@ with open('model3.pkl', 'rb') as f:
 with st.sidebar:
     selected = option_menu(
         "Main Menu",
-        ["Risk Assessment", "Statistics","Exploratory Analysis"],
-        icons=["house", "bar-chart","cloud"],
+        ["Risk Assessment", "Statistics","Exploratory Analysis", "By The Team"],
+        icons=["house", "bar-chart","cloud", "Heart"],
         menu_icon="cast",
         default_index=0
     )
