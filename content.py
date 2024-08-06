@@ -11,7 +11,7 @@ def by_the_team():
                 <img src="https://media.licdn.com/dms/image/D5635AQFsyf2F1HdMJA/profile-framedphoto-shrink_400_400/0/1707495992128?e=1723564800&v=beta&t=tokb0f-cZJU3JtLjwWD4QcS-UC9AV2hVnd-0vpKGCHw" style="width: 100px; height: 100px; vertical-align: middle;">
                 Geethansh's LinkedIn
             </a>
-            <p><strong>Post Link:</strong> <a href="#">Project</a></p>
+            <p><strong>Post Link:</strong> <a href="https://www.linkedin.com/posts/geethanshr_powerbi-nocode-businessintelligence-activity-7210502366268207104-Cjix?utm_source=share&utm_medium=member_desktop">Click here</a></p>
             <blockquote>
                     <p><strong>Challenges Tackled:</strong></p>
                     <p>"One of the major challenges we faced was integrating multiple data sources. We overcame this by using advanced ETL processes."</p>
