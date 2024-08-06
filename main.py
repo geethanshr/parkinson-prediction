@@ -22,7 +22,7 @@ with open('model3.pkl', 'rb') as f:
 with st.sidebar:
     selected = option_menu(
         "Main Menu",
-        ["Risk Assessment", "Statistics","Exploratory Analysis", "By The Team"],
+        ["Risk Assessment", "Statistics","Exploratory Analysis", "By the Team"],
         icons=["house", "bar-chart","cloud", "heart"],
         menu_icon="cast",
         default_index=0
@@ -130,6 +130,6 @@ elif selected == "Exploratory Analysis":
 
     eda()
    
-elif selected =="by_the_team":
+elif selected =="By the Team":
     st.title("By the Team")
     by_the_team()
