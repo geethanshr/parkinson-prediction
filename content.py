@@ -5,17 +5,14 @@ def by_the_team():
 
     st.write("### Geethansh")
     st.markdown("""
-    <blockquote>
-        [![Geethansh's LinkedIn](https://img.shields.io/badge/geethanshr-LinkedIn-blue)](https://www.linkedin.com/in/geethanshr/)
-        <br><br>
-        **Project Link:** [Project](#)
-        <br><br>
-        **Challenges Tackled:**
-        <br><br>
-        - **Problem 1:** Description of how the problem was solved.
-        <br><br>
-        - **Problem 2:** Description of how the problem was solved.
-    </blockquote>
+    > [![Shivam's LinkedIn](https://img.shields.io/badge/Shivam-LinkedIn-blue)](https://www.linkedin.com/in/geethanshr/)
+    > 
+    > **Project Link:** [Project](#)
+    > 
+    > **Challenges Tackled:**
+    > 
+    > - **Problem 1:** Description of how the problem was solved.
+    > - **Problem 2:** Description of how the problem was solved.
     """, unsafe_allow_html=True)
 
     st.write("### Gourav")
