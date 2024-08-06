@@ -1,7 +1,7 @@
 import streamlit as st
 
 def by_the_team():
-    st.title("By the Team")
+    #st.title("By the Team")
 
     st.write("### Shivam's Contributions")
     st.markdown("""
