@@ -6,7 +6,7 @@ def by_the_team():
     st.write("### Geethansh")
     st.markdown("""
     <blockquote>
-        [![Shivam's LinkedIn](https://img.shields.io/badge/Shivam-LinkedIn-blue)](https://www.linkedin.com/in/shivam/)
+        [![Shivam's LinkedIn](https://img.shields.io/badge/Shivam-LinkedIn-blue)](https://www.linkedin.com/in/geethanshr/)
         <br><br>
         **Project Link:** [Project](#)
         <br><br>
