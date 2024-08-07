@@ -33,7 +33,7 @@ def by_the_team():
             <p><strong>About the deployment:</strong> <a href="https://www.linkedin.com/posts/geethanshr_powerbi-nocode-businessintelligence-activity-7210502366268207104-Cjix?utm_source=share&utm_medium=member_desktop">Click here</a></p>
             <blockquote>
                     <p><strong>Challenges Tackled:</strong></p>
-                    <p>"One of the major challenges we faced was integrating multiple data sources. We overcame this by using advanced ETL processes."</p>
+                    <p>"I wasted half day debugging incompatibility between ML model and Scikit-Learn. Read through to save time and avoid repeating the error. The latest version of Scikit-Learn didn't recognize the trees in my RandomForestClassifier. As developers, data scientists, and engineers, we often overlook one of the most crucial aspects of ML/Dev Ops—version control. Version control isn’t just a best practice—it’s a necessity in our fast-paced tech world. Let’s make it a priority to manage our environments carefully and avoid those costly and time-consuming surprises! 🚀"</p>
                 </blockquote>
             </div>
         </div>
