@@ -27,7 +27,7 @@ def by_the_team():
         """
         <div style="border: 1px solid #e6e6e6; padding: 20px; border-radius: 10px;">
             <a href="https://www.linkedin.com/in/geethanshr/" target="_blank">
-                <img src="https://media.licdn.com/dms/image/D5635AQFsyf2F1HdMJA/profile-framedphoto-shrink_400_400/0/1707495992128?e=1723564800&v=beta&t=tokb0f-cZJU3JtLjwWD4QcS-UC9AV2hVnd-0vpKGCHw" style="width: 100px; height: 100px; vertical-align: middle;">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQFzsfTn7n38tA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1707495990589?e=1733356800&v=beta&t=fKwmaymNzI3ZgC1AdObeqDGhCvDPKFjzaE8n9sfC2M8" style="width: 100px; height: 100px; vertical-align: middle;">
                 Geethansh's LinkedIn
             </a>
             <p><strong>About the deployment:</strong> <a href="https://www.linkedin.com/posts/geethanshr_parkinson-prediction-model-deployment-activity-7226810543355912192-9TU3?utm_source=share&utm_medium=member_desktop">Click here</a></p>
